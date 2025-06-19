@@ -4,7 +4,7 @@ package vcmsa.ci.songapp2025
 
 
 
-// MainActivity.kt
+
 package com.example.songapp2025
 
 import android.app.AlertDialog
@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    // Parallel arrays for storing song details
+ 
     private val songs = ArrayList<String>()
     private val artists = ArrayList<String>()
     private val ratings = ArrayList<Int>()
@@ -25,15 +25,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Button to add song to playlist
+        
         val btnAdd = findViewById<Button>(R.id.btnAdd)
         btnAdd.setOnClickListener { showAddSongDialog() }
 
-        // Button to navigate to details screen
+       
         val btnDetails = findViewById<Button>(R.id.btnDetails)
         btnDetails.setOnClickListener {
             val intent = Intent(this, DetailsActivity::class.java)
-            // Pass arrays to next activity
+            
             intent.putStringArrayListExtra("songs", songs)
             intent.putStringArrayListExtra("artists", artists)
             intent.putIntegerArrayListExtra("ratings", ratings)
@@ -41,12 +41,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Button to exit app
+       
         val btnExit = findViewById<Button>(R.id.btnExit)
         btnExit.setOnClickListener { finishAffinity() }
     }
 
-    // Function to show dialog for adding a song
+  
     private fun showAddSongDialog() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_add_song, null)
         val songInput = dialogView.findViewById<EditText>(R.id.etSong)
@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                 val ratingStr = ratingInput.text.toString().trim()
                 val comment = commentInput.text.toString().trim()
 
-                // Error handling
+              
                 if (song.isEmpty() || artist.isEmpty() || ratingStr.isEmpty()) {
                     Toast.makeText(this, "Please fill all fields.", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                     return@setPositiveButton
                 }
 
-                // Add to arrays
+               
                 songs.add(song)
                 artists.add(artist)
                 ratings.add(rating)
